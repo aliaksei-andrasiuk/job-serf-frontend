@@ -1,15 +1,17 @@
 import { Form, Button, Tab, Tabs, ButtonGroup, ToggleButton } from "react-bootstrap";
-
-import './style.css'
-import { JustJoinItForm } from "./JustJoinItForm";
 import { FormEvent, useState } from "react";
+
+import { JustJoinItForm } from "./JustJoinItForm";
 import { TJustJoinItCategories, TJustJoinItSeniorities, ISetUpSearchConfig, TNoFluffJobsSeniorities, TNoFluffJobsTechnologies } from "../../types";
-import { TNoFluffJobsCategories } from "./JobSerf.types";
+import { TNoFluffJobsCategories } from "./JobSurf.types";
 import { NoFluffJobsForm } from "./NoFluffJobsForm/NoFluffJobsForm";
 import { companyRatingList } from "../../constants";
-import GlassdoorIcon from "../../components/Icons/GlassdoorIcon";
+import { GlassdoorIcon } from "../../components";
+import * as jobSurfApiProvider from "../../providers";
 
-export function JobSerf() {
+import './style.scss'
+
+export function JobSurf() {
     const [jSearchLine, setJjSearchLine] = useState('');
     const [jjExcludeSearchLine, setJjExcludeSearchLine] = useState('');
     const [jjCategory, setJjCategory] = useState<TJustJoinItCategories>('all');
@@ -27,7 +29,7 @@ export function JobSerf() {
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const request: ISetUpSearchConfig = {
+        const requestData: ISetUpSearchConfig = {
             justJoinIt: {
                 searchLine: jSearchLine,
                 excludeSearchLine: jjExcludeSearchLine,
@@ -44,13 +46,13 @@ export function JobSerf() {
             companyRating,
         };
 
-        console.log('request', request);
-        
+        jobSurfApiProvider.createSearchConfig(requestData)
+            .catch(error => console.log(error));
     }
 
     return (
-        <div className="container">
-            <h1>Let's serf the job</h1>
+        <div className="p-4">
+            <h1>Let's surf the job</h1>
             <Form onSubmit={onSubmit}>
                 <Tabs
                     defaultActiveKey="justJoinIt"
@@ -86,8 +88,8 @@ export function JobSerf() {
 
                 <div className="mb-5 mt-4">
                     <p className="mb-1">
-                        <GlassdoorIcon className="glassdoor-icon" color="#00a264"/>
-                        Select Glassdor rating
+                        <GlassdoorIcon className="align-text-bottom me-1 glassdoor-icon" color="#00a264"/>
+                        Select Glassdor company rating
                     </p>
                     <ButtonGroup className="flex-wrap">
                         {companyRatingList.map((item) => (
@@ -104,7 +106,7 @@ export function JobSerf() {
                     </ButtonGroup>
                 </div>
 
-                <Button className="w-100" variant="primary" type="submit" >
+                <Button className="w-100 mb-5" variant="primary" type="submit" >
                     Save
                 </Button>
             </Form>

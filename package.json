@@ -1,27 +1,24 @@
 {
-  "name": "job-serf-frontend",
+  "name": "job-surf-frontend",
   "version": "0.1.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:aliaksei-andrasiuk/job-serf-frontend.git"
+    "url": "git@github.com:aliaksei-andrasiuk/job-surf-frontend.git"
   },
-  "homepage": "https://aliaksei-andrasiuk.github.io/job-serf-frontend",
+  "homepage": "https://aliaksei-andrasiuk.github.io/job-surf-frontend",
   "dependencies": {
+    "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-dom": "^18.2.0"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-env start",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
@@ -43,13 +40,14 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "^16.18.40",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
-    "typescript": "^4.9.5",
     "eslint-config-prettier": "^9.0.0",
+    "gh-pages": "^6.0.0",
     "prettier": "^3.0.1",
+    "react-app-env": "^1.2.3",
+    "react-scripts": "5.0.1",
     "sass": "^1.65.1",
-    "gh-pages": "^6.0.0"
+    "typescript": "^4.9.5"
   }
 }

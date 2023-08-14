@@ -1,8 +1,6 @@
-import { IDefaultIconProps } from './icon.types';
+import { IDefaultIconProps } from '../icon.types';
 
-
-
-function GlassdoorIcon({
+export function GlassdoorIcon({
     color = '#000',
     className
 }: IDefaultIconProps) {
@@ -20,5 +18,3 @@ function GlassdoorIcon({
     </svg>
   );
 }
-
-export default GlassdoorIcon;

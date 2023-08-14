@@ -1,25 +1,3 @@
-// searchLine: {
-//     type: String,
-// },
-// excludeSearchLine: {
-//     type: String,
-// },
-// category: {
-//     type: Array,
-// },
-// seniority: {
-//     type: Array,
-// },
-// companyRating: {
-//     required: true,
-//     type: Number,
-// },
-// userId: {
-//     required: true,
-//     type: String,
-// }
-// });
-
 export type TJostJoinItCategories =
     | 'javascript'
     | 'html'
