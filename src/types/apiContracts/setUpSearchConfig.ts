@@ -3,7 +3,8 @@ import { TJustJoinItSeniorities, TJustJoinItCategories, TNoFluffJobsCategories, 
 export interface ISetUpSearchConfig {
     justJoinIt: IJustJoinItConfig;
     noFluffJobs: INoFluffJobsConfig;
-    companyRating: number;
+    companyRating: string;
+    userId: string;
 };
 
 export interface IJustJoinItConfig {

@@ -56,6 +56,10 @@ export const justJoinItCategoriesList: ICategoryItem<TJustJoinItCategories>[] = 
       text: "Admin"
    },
    {
+      key: "ux",
+      text: "UI/UX"
+   },
+   {
       key: "pm",
       text: "PM"
    },

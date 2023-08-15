@@ -1,5 +1,6 @@
 import { Form, Button, Tab, Tabs, ButtonGroup, ToggleButton } from "react-bootstrap";
 import { FormEvent, useState } from "react";
+import qs from 'query-string';
 
 import { JustJoinItForm } from "./JustJoinItForm";
 import { TJustJoinItCategories, TJustJoinItSeniorities, ISetUpSearchConfig, TNoFluffJobsSeniorities, TNoFluffJobsTechnologies } from "../../types";
@@ -23,11 +24,18 @@ export function JobSurf() {
     const [nfSeniorities, setNfSeniorities] = useState<TNoFluffJobsSeniorities[]>([]);
     const [nfTechnologies, setNfTechnologies] = useState<TNoFluffJobsTechnologies[]>([]);
 
-    const [companyRating, setCompanyRating] = useState<number>(0);
-
+    const [companyRating, setCompanyRating] = useState<string>('');
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        
+        const { userId } = qs.parse(window.location.search);
+
+        if (!userId) {
+            // TODO when implement errors
+            console.error('userId is required');
+            return
+        }
 
         const requestData: ISetUpSearchConfig = {
             justJoinIt: {
@@ -44,6 +52,7 @@ export function JobSurf() {
                 technologies: nfTechnologies,
             },
             companyRating,
+            userId: userId as string,
         };
 
         jobSurfApiProvider.createSearchConfig(requestData)
